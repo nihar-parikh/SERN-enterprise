@@ -1,0 +1,41 @@
+{
+  "name": "sern-optimiztaions2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start:development": "cross-env NODE_ENV=development sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations & nodemon ./src/index.js",
+    "start:qa": "cross-env NODE_ENV=qa sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations & nodemon ./src/index.js",
+    "start:staging": "cross-env NODE_ENV=staging sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations & nodemon ./src/index.js",
+    "start:production": "cross-env NODE_ENV=production sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations & node ./src/index.js",
+    "migrate": "cross-env sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations --env development",
+    "migrate:qa": "cross-env sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations --env qa",
+    "migrate:staging": "cross-env sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations --env staging",
+    "migrate:prod": "cross-env sequelize db:migrate --config ./src/config/migrationsConfig.js --migrations-path ./src/migrations --env production",
+    "generateMigration": "cross-env sequelize migration:generate --migrations-path src/migrations --name",
+    "undoMigration": "cross-env sequelize db:migrate:undo --migrations-path src/migrations"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "bcrypt": "^5.1.0",
+    "body-parser": "^1.20.2",
+    "cookie-parser": "^1.4.6",
+    "cors": "^2.8.5",
+    "crypto": "^1.0.1",
+    "crypto-js": "^4.1.1",
+    "express": "^4.18.2",
+    "express-validator": "^7.0.1",
+    "jsonwebtoken": "^9.0.1",
+    "mysql2": "^3.4.3",
+    "sequelize": "^6.32.1",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^7.0.3",
+    "dotenv": "^16.3.1",
+    "nodemon": "^1.14.9",
+    "sequelize-cli": "^5.3.0"
+  }
+}
